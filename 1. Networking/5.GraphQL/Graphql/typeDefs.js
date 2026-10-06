@@ -9,22 +9,26 @@
 
 export const typeDefs = `#graphql 
 
-    type author {
+    type Author {
         id: ID!
         name: String!
-        books:[book]
+        books:[Book]
     }
 
-    type book {
+    type Book {
         id: ID!
         title: String!
         publishedYear: Int
-        author:author
+        author:Author
     }
 
     type Query {
-        authors: [author]
-        books: [book]
+        Authors: [Author]
+        Books: [Book]
+    }
+
+    type Mutation {
+        addBook(title:String!, authorId: ID!): Book!
     }
 
 
