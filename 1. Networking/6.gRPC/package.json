@@ -1,0 +1,21 @@
+{
+  "name": "6.grpc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "note.js",
+  "type": "module",
+  "scripts": {
+    "client": "nodemon /client/index.js",
+    "server": "nodemon /serverndex.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
