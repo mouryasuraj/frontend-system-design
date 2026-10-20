@@ -11,4 +11,12 @@
 8. Difference between websockets birdirectional streaming and gRPC bidirectional streaming: WebSockets provide a full-duplex communication channel over a single TCP connection, allowing for bidirectional communication between the client and server. However, WebSockets do not have built-in support for message framing or serialization, which can lead to challenges in handling complex data structures. In contrast, gRPC bidirectional streaming uses Protocol Buffers for message serialization, providing a more efficient and structured way to transmit data. Additionally, gRPC offers features such as flow control, authentication, and error handling, making it a more robust solution for building distributed systems.
 9. In RPC, Binary serialization is used to encode data in a compact binary format, which reduces the size of the transmitted data and improves performance. This is particularly important for applications that require low latency and high throughput, such as real-time communication or large-scale distributed systems. Binary serialization also allows for efficient parsing and deserialization of data, enabling faster processing on both the client and server sides.
 
+
+
+
+ 
+
+
+
+
 */
