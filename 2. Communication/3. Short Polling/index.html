@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Short Polling</title>
+</head>
+<body>
+    <h1>Short Polling</h1>
+    <h3 id="container"></h3>
+    <button id="btn">Update Data</button>
+    <span id="message"></span>
+    <script>
+
+        const updateBtn = document.getElementById("btn")
+        updateBtn.addEventListener("click", updateData)
+
+        async function getData() {
+            const res = await fetch("/get")
+            const data = await res.json()
+            document.getElementById("container").innerHTML = data.data
+        }
+
+        // always clear intervals when not needed
+        setInterval(() => {
+            getData()
+        }, 3000);
+
+        async function updateData() {
+            const res = await fetch("/update")
+            document.getElementById("message").innerHTML = "Updated succesfully"
+            setTimeout(() => {
+                document.getElementById("message").innerHTML = ""
+            }, 3000);
+        }
+
+    </script>
+</body>
+</html>
