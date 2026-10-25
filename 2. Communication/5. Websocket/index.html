@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Websocket Polling</title>
+</head>
+<body>
+    <h1>Websocket Polling</h1>
+    <h3 id="messages"></h3>
+    <form id="form">
+        <input type="text" name="" id="input">
+    </form>
+    <script src="/socket.io/socket.io.js" ></script>
+    <script>
+        const socket = io()
+        const form = document.getElementById("form")
+        const input = document.getElementById("input")
+        const messages = document.getElementById("messages")
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault()
+            const val = input.value.trim()
+
+            socket.emit("chat message", val)
+            input.value = ''
+        })
+
+        socket.on('chat message', (msg)=>{
+            const item = document.createElement('li')
+            item.innerText = msg
+            messages.appendChild(item)
+        })
+        
+
+    </script>
+</body>
+</html>
