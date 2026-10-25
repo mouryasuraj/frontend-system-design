@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Long Polling</title>
+</head>
+<body>
+    <h1>Long Polling</h1>
+    <h3 id="container"></h3>
+    <button id="btn">Update Data</button>
+    <span id="message"></span>
+    <script>
+
+        const updateBtn = document.getElementById("btn")
+        updateBtn.addEventListener("click", async ()=>{
+            try {
+                const res = await fetch(`/update?newData=${Math.random()}`)
+                const data = await res.json()
+                document.getElementById("message").innerHTML = data.message
+
+            } catch (error) {
+                
+            }       
+        })
+        
+
+        async function getData(latestData) {
+            try {
+                const res = await fetch(`/get?latestData=${latestData}`)
+                const data = await res.json()
+                document.getElementById("container").innerHTML = data.data
+                getData(data.data)
+            } catch (error) {
+                console.log("Something is wrong: ",error)
+            }
+            
+        }
+
+        getData();
+
+    </script>
+</body>
+</html>
